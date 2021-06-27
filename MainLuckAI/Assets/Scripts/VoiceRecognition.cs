@@ -22,12 +22,16 @@ void Start()
 	actions.Add("up", Up);
 	actions.Add("down", Down);
 	actions.Add("back", Back);
-	actions.Add("I feel angry", DisappointedReaction);
-	actions.Add("I feel happy", PleasedReaction);
-	actions.Add("I feel sad", SadReaction);
-	actions.Add("I feel loved", LoveReaction);
+    actions.Add("What is this place?", IntroReaction);
+    actions.Add("I feel angry.", DisappointedReaction);
+	actions.Add("I feel happy.", PleasedReaction);
+	actions.Add("I feel sad.", SadReaction);
+	actions.Add("I feel loved.", LoveReaction);
+    actions.Add("I feel confused.", ConfusionReaction);
+    actions.Add("I feel scared.", ScaredReaction);
+  
 
-	keywordRecognizer = new KeywordRecognizer(actions.Keys.ToArray()); //SLista de palabras que reconoce. Las traducira a actions keys.
+    keywordRecognizer = new KeywordRecognizer(actions.Keys.ToArray()); //SLista de palabras que reconoce. Las traducira a actions keys.
 	keywordRecognizer.OnPhraseRecognized += RecognizedSpeech;
 	keywordRecognizer.Start();
 }
@@ -83,11 +87,25 @@ private void LoveReaction()
 
 private void ConfusionReaction()
 {
-	rinpocheSpeaks.text = "Confusion is a part of learning";
+	rinpocheSpeaks.text = "Confusion is a part of learning.";
 	Invoke("ClearText", 5);
 }
 
-private void ClearText()
+private void IntroReaction()
+    {
+     rinpocheSpeaks.text = "This is a place of learning.";
+     Invoke("ClearText", 5);
+
+ }
+
+ private void ScaredReaction()
+    {
+        rinpocheSpeaks.text = "It is human to feel scared.";
+        Invoke("ClearText", 5);
+
+    }
+
+    private void ClearText()
 {
 	rinpocheSpeaks.text = "";
 }
