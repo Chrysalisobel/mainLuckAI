@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.Windows.Speech;
+using TMPro;
 
 public class VoiceRecognition : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class VoiceRecognition : MonoBehaviour
 	public  ParticleSystem angryParticles;
 	public  ParticleSystem rainbowParticles;
 	public  ParticleSystem sadParticles;
+	public  TextMeshProUGUI rinpocheSpeaks;
 
 void Start()
 {
@@ -23,6 +25,7 @@ void Start()
 	actions.Add("I feel angry", DisappointedReaction);
 	actions.Add("I feel happy", PleasedReaction);
 	actions.Add("I feel sad", SadReaction);
+	actions.Add("I feel loved", LoveReaction);
 
 	keywordRecognizer = new KeywordRecognizer(actions.Keys.ToArray()); //SLista de palabras que reconoce. Las traducira a actions keys.
 	keywordRecognizer.OnPhraseRecognized += RecognizedSpeech;
@@ -70,6 +73,23 @@ private void PleasedReaction()
 private void SadReaction()
 {
 	sadParticles.Play();
+}
+
+private void LoveReaction()
+{
+	rinpocheSpeaks.text = "You are definitely loved!";
+	Invoke("ClearText", 5);
+}
+
+private void ConfusionReaction()
+{
+	rinpocheSpeaks.text = "Confusion is a part of learning";
+	Invoke("ClearText", 5);
+}
+
+private void ClearText()
+{
+	rinpocheSpeaks.text = "";
 }
 
 }
