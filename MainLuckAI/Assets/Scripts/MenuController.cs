@@ -12,6 +12,27 @@ public class MenuController : MonoBehaviour
         SceneManager.LoadScene("MainScene");
     }
 
+    // What happens when you click on "ObjectiveButton"
+
+    public void OnClickObjectiveButton()
+    {
+        SceneManager.LoadScene("Objective");
+    }
+
+    // What happens when you click on "CreditsButton"
+
+    public void OnClickCreditsButton()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
+    // What happens when you click on "BackButton"
+
+    public void OnClickBackButton()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
 
     // What happens when you click on "QuitButton"
 
